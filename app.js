@@ -47,15 +47,25 @@
 
 
 function romanToInt(s) {
-  const key = {
-
+  const key = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000}
+  let integers = []
+  for (let i = 0; i < s.length; i++) {
+    if (key[s[i]] < key[s[i + 1]]) {
+      integers.push(key[s[i+1]] - key[s[i]])
+      i++
+    } else {
+      integers.push(key[s[i]])
+    }
+    
   }
-
+  console.log(integers);
+  console.log(integers.reduce((a,b)=> a+b, 0));
+  return integers.reduce((a,b)=> a+b, 0)
 
 }
 
-romanToInt('V')
-
+romanToInt("MCMXCIV")
+// 1000, 100, 1000, 10, 100, 1, 5
 
 // lettcode degree of an array
 //https://leetcode.com/problems/degree-of-an-array/

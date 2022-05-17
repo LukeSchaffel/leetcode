@@ -56,12 +56,8 @@ function romanToInt(s) {
     } else {
       integers.push(key[s[i]])
     }
-    
   }
-  console.log(integers);
-  console.log(integers.reduce((a,b)=> a+b, 0));
   return integers.reduce((a,b)=> a+b, 0)
-
 }
 
 // romanToInt("MCMXCIV")
@@ -137,3 +133,31 @@ function romanToInt(s) {
 // Explanation: 
 // The degree is 3 because the element 2 is repeated 3 times.
 // So [2,2,3,1,4,2] is the shortest subarray, therefore returning 6.
+
+
+
+
+//Two Sum
+
+//https://leetcode.com/problems/two-sum/
+
+var twoSum = function(nums, target) {
+  //go through each number
+  // find out what the number pair needs to be
+  // find out if that exists in the array
+  let answer = []
+  nums.forEach((num, idx) => {
+    let needed = target - num
+    if (nums.includes(needed)) {
+      let idxNeeded = nums.indexOf(needed)
+      if (idx !== idxNeeded) {
+        answer.push(idx, idxNeeded)
+      }
+      
+    }
+  })
+  
+  return answer.splice(0,2)
+};
+
+twoSum([3,2,4], 6 )

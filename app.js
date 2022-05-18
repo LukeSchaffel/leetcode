@@ -141,23 +141,55 @@ function romanToInt(s) {
 
 //https://leetcode.com/problems/two-sum/
 
-var twoSum = function(nums, target) {
-  //go through each number
-  // find out what the number pair needs to be
-  // find out if that exists in the array
-  let answer = []
-  nums.forEach((num, idx) => {
-    let needed = target - num
-    if (nums.includes(needed)) {
-      let idxNeeded = nums.indexOf(needed)
-      if (idx !== idxNeeded) {
-        answer.push(idx, idxNeeded)
-      }
+// var twoSum = function(nums, target) {
+//   //go through each number
+//   // find out what the number pair needs to be
+//   // find out if that exists in the array
+//   let answer = []
+//   nums.forEach((num, idx) => {
+//     let needed = target - num
+//     if (nums.includes(needed)) {
+//       let idxNeeded = nums.indexOf(needed)
+//       if (idx !== idxNeeded) {
+//         answer.push(idx, idxNeeded)
+//       }
       
-    }
-  })
+//     }
+//   })
   
-  return answer.splice(0,2)
-};
+//   return answer.splice(0,2)
+// };
 
-twoSum([3,2,4], 6 )
+
+function twoSum(nums, target) {
+  let m = new Map()
+  nums.forEach(num => {
+    m.set(num, target - num)
+  })
+
+
+  for (const i of m) {
+
+    console.log(nums.indexOf(i[0]), nums.indexOf(i[1],1));
+    if (nums.includes(i[1]) && nums.indexOf(i[0]) !== nums.indexOf(i[1])){
+      return [nums.indexOf(i[0]), nums.indexOf(i[1], 1)]
+    }
+  }
+
+
+}
+
+console.log(twoSum([3, 3], 6))
+
+
+// // twoSum([3,2,4], 6 )
+
+// let m = new Map()
+
+// m.set(10, 100)
+// m.set(8, true)
+// m.set("apple", 45)
+
+// for (const i of m) {
+//   console.log(i);
+// }

@@ -163,23 +163,29 @@ function romanToInt(s) {
 
 function twoSum(nums, target) {
   let m = new Map()
+  let pair = []
   nums.forEach(num => {
     m.set(num, target - num)
   })
 
 
   for (const i of m) {
-
-    console.log(nums.indexOf(i[0]), nums.indexOf(i[1],1));
     if (nums.includes(i[1]) && nums.indexOf(i[0]) !== nums.indexOf(i[1])){
-      return [nums.indexOf(i[0]), nums.indexOf(i[1], 1)]
+      pair = [nums.indexOf(i[0]), nums.indexOf(i[1])]
     }
+  }
+
+  console.log(pair);
+  if (pair[0]===pair[1]) {
+    return [nums.indexOf(pair[0]), nums.indexOf(pair[1], 2)]
+  } else {
+    return [nums.indexOf(pair[0]), nums.indexOf(pair[1])]
   }
 
 
 }
 
-console.log(twoSum([3, 3], 6))
+// console.log(twoSum([3, 3], 6))
 
 
 // // twoSum([3,2,4], 6 )
@@ -193,3 +199,22 @@ console.log(twoSum([3, 3], 6))
 // for (const i of m) {
 //   console.log(i);
 // }
+
+//palendrome number
+//https://leetcode.com/problems/palindrome-number/
+
+
+
+var isPalindrome = function(x) {
+  let string = x.toString()
+  let forwardArr = string.split("")
+  let backwardArr = []
+  forwardArr.forEach(number => {
+    backwardArr.unshift(number)
+  })
+  return forwardArr.join("") === backwardArr.join("") ? true : false
+
+};
+
+
+console.log(isPalindrome(122));

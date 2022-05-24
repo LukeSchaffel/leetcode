@@ -209,12 +209,38 @@ var isPalindrome = function(x) {
   let string = x.toString()
   let forwardArr = string.split("")
   let backwardArr = []
-  forwardArr.forEach(number => {
-    backwardArr.unshift(number)
-  })
+  forwardArr.forEach(number => backwardArr.unshift(number))
   return forwardArr.join("") === backwardArr.join("") ? true : false
 
 };
 
 
-console.log(isPalindrome(122));
+// console.log(isPalindrome(122));
+
+//longest common prefix https://leetcode.com/problems/longest-common-prefix/
+
+
+var longestCommonPrefix = function(strs) {
+  let firstLetters = []
+  for (let i = 0; i < strs.length; i++) {
+    let char = strs[i][0]
+    console.log(char);
+  }  
+
+};
+
+
+// console.log(longestCommonPrefix(["flower","flow","alight"]));
+
+
+// 21 merge two sorted lists
+// https://leetcode.com/problems/merge-two-sorted-lists/
+
+
+var mergeTwoLists = function(list1, list2) {
+  console.log(list1);
+};
+
+
+
+console.log(mergeTwoLists([1,2,4],[1,3,4]));

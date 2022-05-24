@@ -238,7 +238,21 @@ var longestCommonPrefix = function(strs) {
 
 
 var mergeTwoLists = function(list1, list2) {
-  console.log(list1);
+  let sorted = []
+  let length 
+  if (list1.length > list2.length || list1.length === list2.length ) {
+    length = list1.length
+  } else {
+    length = list2.length
+  }
+  let holder
+  for (let i = 0; i < length; i++) {
+    holder = link1[i]
+    if (condition) {
+      
+    }
+    
+  }
 };
 
 

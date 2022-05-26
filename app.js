@@ -279,4 +279,26 @@ var mergeTwoLists = function (l1, l2) {
   return headOfNewList.next;
 };
 
-console.log(mergeTwoLists([1,2,3],[4,5,6]));
+// console.log(mergeTwoLists([1,2,3],[4,5,6]));
+
+
+//code wars twosum https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/javascript
+
+function twoSum(numbers, target) {
+  //return the indicies of the array that add up to the target
+  //must be two different items
+  let pairs = new Map()
+
+  numbers.forEach(number => {
+    pairs.set(number, target-number)
+  })
+
+  for (const i of pairs) {
+    if(numbers.includes(i[1]) && numbers.indexOf(i[0]) !== numbers.indexOf(i[1])){
+      return [numbers.indexOf(i[0]), numbers.indexOf(i[1])]
+    }
+  }
+}
+
+
+console.log(twoSum([1,2,3], 4));

@@ -301,4 +301,33 @@ function twoSum(numbers, target) {
 }
 
 
-console.log(twoSum([1,2,3], 4));
+// console.log(twoSum([1,2,3], 4));
+
+//https://www.codewars.com/kata/5626b561280a42ecc50000d1/train/javascript
+
+function sumDigPow(a, b) {
+  // Your code here
+  let answers = []
+  
+  for (let i = a; i <= b; i++) {
+    //array of nums
+    let stringNum = String(i)
+    let numArray = []
+    for (let j = 0; j < stringNum.length; j++) {
+      numArray.push(parseInt(stringNum[j]))
+    }
+    let acc = 0
+
+    numArray.forEach((number, idx)=> {
+      acc = acc + Math.pow(number, idx+1)
+    })
+
+    if (i === acc){answers.push(i)}
+
+  }
+  return answers
+
+  
+}
+
+console.log(sumDigPow(1, 100));

@@ -324,4 +324,66 @@ function sumDigPow(a, b) {
   
 }
 
-console.log(sumDigPow(1, 100));
+// console.log(sumDigPow(1, 100));
+
+
+
+
+// // add two numbers linked list
+// https://leetcode.com/problems/add-two-numbers/
+// /**
+//  * Definition for singly-linked list.
+//  * function ListNode(val, next) {
+//  *     this.val = (val===undefined ? 0 : val)
+//  *     this.next = (next===undefined ? null : next)
+//  * }
+//  */
+// /**
+//  * @param {ListNode} l1
+//  * @param {ListNode} l2
+//  * @return {ListNode}
+//  */
+//  var addTwoNumbers = function(l1, l2) {
+//   // loop through both lists and get the numbers
+//   //unshift each number into an array
+//   let current1 = l1
+//   let current2 = l2
+//   let num1 = []
+//   let num2 = []
+//   let string1 = ""
+//   let string2 = ""
+//   while (current1 !== null){
+//       num1.unshift(current1.val)
+//       current1 = current1.next
+//   }
+//   while (current2 !== null){
+//       num2.unshift(current2.val)
+//       current2 = current2.next
+//   }
+//   num1.forEach(number => string1 += number)
+//   num1 = parseInt(string1)
+  
+//   num2.forEach(number => string2 += number)
+//   num2 = parseInt(string2)
+  
+//   const total = num1 + num2
+//   const stringTotal = total.toString()
+//   let backwardsTotal = []
+  
+//   console.log(typeof stringTotal)
+  
+//   for (let i of stringTotal){
+//       backwardsTotal.unshift(i)
+//   }
+  
+//   let head = new ListNode(backwardsTotal[0], backwardsTotal[1])
+  
+//   // for (let i = 0; i< backwardsTotal.length; i ++){
+//   //     head.next = backwardsTotal[i+1]
+//   //     head = head.next
+//   // }
+ 
+
+  
+//   console.log(head)
+// };

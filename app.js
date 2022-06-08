@@ -332,20 +332,16 @@ function sumDigPow(a, b) {
 // // add two numbers linked list
 // https://leetcode.com/problems/add-two-numbers/
 // /**
-//  * Definition for singly-linked list.
-//  * function ListNode(val, next) {
-//  *     this.val = (val===undefined ? 0 : val)
-//  *     this.next = (next===undefined ? null : next)
-//  * }
-//  */
-// /**
-//  * @param {ListNode} l1
-//  * @param {ListNode} l2
-//  * @return {ListNode}
-//  */
-//  var addTwoNumbers = function(l1, l2) {
-//   // loop through both lists and get the numbers
-//   //unshift each number into an array
+// var addTwoNumbers = function(l1, l2) {
+    
+//   class Node {
+// constructor(val) {
+//   this.val = val;
+//   this.next = null;
+// }
+// }
+  
+  
 //   let current1 = l1
 //   let current2 = l2
 //   let num1 = []
@@ -370,20 +366,23 @@ function sumDigPow(a, b) {
 //   const stringTotal = total.toString()
 //   let backwardsTotal = []
   
-//   console.log(typeof stringTotal)
   
 //   for (let i of stringTotal){
 //       backwardsTotal.unshift(i)
 //   }
   
-//   let head = new ListNode(backwardsTotal[0], backwardsTotal[1])
-  
-//   // for (let i = 0; i< backwardsTotal.length; i ++){
-//   //     head.next = backwardsTotal[i+1]
-//   //     head = head.next
-//   // }
  
+//   let dummy = new Node(null)
+//   let tail = dummy
 
+//   for (let i = 0; i < backwardsTotal.length; i++){
+//       const current = new Node(parseInt(backwardsTotal[i]))
+//       tail.next = current
+//       tail = tail.next
+      
+//   }
+//   console.log(dummy.next)
+//   return dummy.next
   
-//   console.log(head)
+  
 // };

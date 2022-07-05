@@ -386,3 +386,24 @@ function sumDigPow(a, b) {
   
   
 // };
+
+// remove duplicates in array https://leetcode.com/problems/remove-duplicates-from-sorted-array/submissions/
+
+// var removeDuplicates = function(nums) {
+//   for (let i = 0; i < nums.length; i++){
+//       const current = nums[i]
+//       for (let j = i+1; j < nums.length; j ++){
+//           if (nums[j] === current){
+//               nums.splice(j, 1)
+//               j--
+//           }
+//       }
+//   }    
+//   return nums
+// };
+
+
+
+
+
+console.log(removeDuplicates([1,1,2,2,2,2,3,3,3,3,3]));

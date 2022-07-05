@@ -17,7 +17,7 @@
 // C can be placed before D (500) and M (1000) to make 400 and 900.
 // Given a roman numeral, convert it to an integer.
 
- 
+
 
 // Example 1:
 
@@ -34,7 +34,7 @@
 // Input: s = "MCMXCIV"
 // Output: 1994
 // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
- 
+
 
 // Constraints:
 
@@ -47,17 +47,17 @@
 
 
 function romanToInt(s) {
-  const key = {I:1,V:5,X:10,L:50,C:100,D:500,M:1000}
+  const key = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 }
   let integers = []
   for (let i = 0; i < s.length; i++) {
     if (key[s[i]] < key[s[i + 1]]) {
-      integers.push(key[s[i+1]] - key[s[i]])
+      integers.push(key[s[i + 1]] - key[s[i]])
       i++
     } else {
       integers.push(key[s[i]])
     }
   }
-  return integers.reduce((a,b)=> a+b, 0)
+  return integers.reduce((a, b) => a + b, 0)
 }
 
 // romanToInt("MCMXCIV")
@@ -93,7 +93,7 @@ function romanToInt(s) {
 // C can be placed before D (500) and M (1000) to make 400 and 900.
 // Given an integer, convert it to a roman numeral.
 
- 
+
 
 // Example 1:
 
@@ -153,10 +153,10 @@ function romanToInt(s) {
 //       if (idx !== idxNeeded) {
 //         answer.push(idx, idxNeeded)
 //       }
-      
+
 //     }
 //   })
-  
+
 //   return answer.splice(0,2)
 // };
 
@@ -170,13 +170,13 @@ function twoSum(nums, target) {
 
 
   for (const i of m) {
-    if (nums.includes(i[1]) && nums.indexOf(i[0]) !== nums.indexOf(i[1])){
+    if (nums.includes(i[1]) && nums.indexOf(i[0]) !== nums.indexOf(i[1])) {
       pair = [nums.indexOf(i[0]), nums.indexOf(i[1])]
     }
   }
 
   console.log(pair);
-  if (pair[0]===pair[1]) {
+  if (pair[0] === pair[1]) {
     return [nums.indexOf(pair[0]), nums.indexOf(pair[1], 2)]
   } else {
     return [nums.indexOf(pair[0]), nums.indexOf(pair[1])]
@@ -205,7 +205,7 @@ function twoSum(nums, target) {
 
 
 
-var isPalindrome = function(x) {
+var isPalindrome = function (x) {
   let string = x.toString()
   let forwardArr = string.split("")
   let backwardArr = []
@@ -220,12 +220,12 @@ var isPalindrome = function(x) {
 //longest common prefix https://leetcode.com/problems/longest-common-prefix/
 
 
-var longestCommonPrefix = function(strs) {
+var longestCommonPrefix = function (strs) {
   let firstLetters = []
   for (let i = 0; i < strs.length; i++) {
     let char = strs[i][0]
     console.log(char);
-  }  
+  }
 
 };
 
@@ -246,34 +246,34 @@ var mergeTwoLists = function (l1, l2) {
 
   // Whilst both of the passed in lists contain more elements
   while (l1 != null && l2 != null) {
-      // If l1's value is smaller
-      if (l1.val < l2.val) {
-          // Add l1's value to the new list
-          newList.next = l1;
+    // If l1's value is smaller
+    if (l1.val < l2.val) {
+      // Add l1's value to the new list
+      newList.next = l1;
 
-          // Move l1 to its next element
-          l1 = l1.next;
-      } else {
-          // Add l2's value to the new list
-          newList.next = l2;
+      // Move l1 to its next element
+      l1 = l1.next;
+    } else {
+      // Add l2's value to the new list
+      newList.next = l2;
 
-          // Move l2 to its next element
-          l2 = l2.next;
-      }
+      // Move l2 to its next element
+      l2 = l2.next;
+    }
 
-      // Move into the next level of the LinkedList for the next iteration
-      newList = newList.next;
+    // Move into the next level of the LinkedList for the next iteration
+    newList = newList.next;
   }
 
   // If l1 has run out of elements
   if (l1 == null) {
-      // Append l2 to the new list
-      newList.next = l2;
+    // Append l2 to the new list
+    newList.next = l2;
   }
   // If l2 has run out of elements
   else {
-      // Append l1 to the new list
-      newList.next = l1;
+    // Append l1 to the new list
+    newList.next = l1;
   }
 
   return headOfNewList.next;
@@ -290,11 +290,11 @@ function twoSum(numbers, target) {
   let pairs = new Map()
 
   numbers.forEach(number => {
-    pairs.set(number, target-number)
+    pairs.set(number, target - number)
   })
 
   for (const i of pairs) {
-    if(numbers.includes(i[1]) && numbers.indexOf(i[0]) !== numbers.indexOf(i[1])){
+    if (numbers.includes(i[1]) && numbers.indexOf(i[0]) !== numbers.indexOf(i[1])) {
       return [numbers.indexOf(i[0]), numbers.indexOf(i[1])]
     }
   }
@@ -314,14 +314,14 @@ function sumDigPow(a, b) {
       numArray.push(parseInt(stringNum[j]))
     }
     let acc = 0
-    numArray.forEach((number, idx)=> {
-      acc = acc + Math.pow(number, idx+1)
+    numArray.forEach((number, idx) => {
+      acc = acc + Math.pow(number, idx + 1)
     })
-    if (i === acc){answers.push(i)}
+    if (i === acc) { answers.push(i) }
   }
   return answers
 
-  
+
 }
 
 // console.log(sumDigPow(1, 100));
@@ -333,15 +333,15 @@ function sumDigPow(a, b) {
 // https://leetcode.com/problems/add-two-numbers/
 // /**
 // var addTwoNumbers = function(l1, l2) {
-    
+
 //   class Node {
 // constructor(val) {
 //   this.val = val;
 //   this.next = null;
 // }
 // }
-  
-  
+
+
 //   let current1 = l1
 //   let current2 = l2
 //   let num1 = []
@@ -358,20 +358,20 @@ function sumDigPow(a, b) {
 //   }
 //   num1.forEach(number => string1 += number)
 //   num1 = parseInt(string1)
-  
+
 //   num2.forEach(number => string2 += number)
 //   num2 = parseInt(string2)
-  
+
 //   const total = num1 + num2
 //   const stringTotal = total.toString()
 //   let backwardsTotal = []
-  
-  
+
+
 //   for (let i of stringTotal){
 //       backwardsTotal.unshift(i)
 //   }
-  
- 
+
+
 //   let dummy = new Node(null)
 //   let tail = dummy
 
@@ -379,12 +379,12 @@ function sumDigPow(a, b) {
 //       const current = new Node(parseInt(backwardsTotal[i]))
 //       tail.next = current
 //       tail = tail.next
-      
+
 //   }
 //   console.log(dummy.next)
 //   return dummy.next
-  
-  
+
+
 // };
 
 // remove duplicates in array https://leetcode.com/problems/remove-duplicates-from-sorted-array/submissions/
@@ -404,6 +404,43 @@ function sumDigPow(a, b) {
 
 
 
+const removeDuplicates = nums => {
+  let i = 0;
+  for (let j = 1; j < nums.length; j++) {
+    if (nums[j] != nums[i]) {
+      i++;
+      nums[i] = nums[j];
+    }
+  }
+  return i + 1;
+}
 
 
-console.log(removeDuplicates([1,1,2,2,2,2,3,3,3,3,3]));
+// var lengthOfLastWord = function (s) {
+//   if (s.indexOf(' ') === -1) return s.length
+//   let i = s.length - 1
+//   const array = []
+
+//   if (s[i] === ' ') {
+//     while (s[i] == ' ') {
+//       i--
+//     }
+
+//   }
+
+//   while (s[i] !== ' ') {
+//     array.unshift(s[i])
+//     i--
+//   }
+
+
+//   return array.length
+// };
+
+
+var lengthOfLastWord = function (s) {
+  const words = s.trim().split(" ");
+  return words.length > 0 ? words[words.length - 1].length : 0;
+};
+
+console.log(lengthOfLastWord(" a"));

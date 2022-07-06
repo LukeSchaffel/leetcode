@@ -95,12 +95,24 @@ const isInteresting = (number, awesomePhrases) => {
   }
 
   // check if all trailing zeros
-  const zeros = checkForZeros(arrayNumber, number)
-  if (zeros === 1 || zeros === 2 ) return zeros
+  // const zeros = checkForZeros(arrayNumber, number)
+  // if (zeros === 1 || zeros === 2 ) return zeros
 
+  //check for repeating numbers
   if(checkForSameNumber(number)) return 2
   if(checkForSameNumber(number + 1)) return 1
   if(checkForSameNumber(number + 2)) return 1
+
+  //check for incrementing
+  if(checkIncrementing(number)) return 2
+  if(checkIncrementing(number + 1)) return 1
+  if(checkIncrementing(number + 2)) return 1
+
+  //check for decrementing
+  if(checkDecrementing(number)) return 2
+  if(checkDecrementing(number + 1)) return 1
+  if(checkDecrementing(number + 2)) return 1
+  
 
 
 
@@ -129,7 +141,33 @@ const checkForSameNumber = (number) => {
   return true
 }
 
+const checkIncrementing = (number) => {
+  const arrayNumber = number.toString().split('').map((num) => parseInt(num))
+  let pointer = arrayNumber[0]
+  for (let i = 1; i < arrayNumber.length; i++) {
+    const current = arrayNumber[i];
+    if (current !== (pointer + 1)){
+      return false
+    }
+    pointer ++
+  }
+  return true
+}
+
+const checkDecrementing = (number) => {
+  const arrayNumber = number.toString().split('').map((num) => parseInt(num))
+  let pointer = arrayNumber[0]
+  for (let i = 1; i < arrayNumber.length; i++) {
+    const current = arrayNumber[i];
+    if (current !== (pointer - 1)){
+      return false
+    }
+    pointer --
+  }
+  return true
+}
 
 
 
-console.log(isInteresting(997, []));
+
+console.log(isInteresting(65432, []));

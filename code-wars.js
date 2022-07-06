@@ -79,37 +79,37 @@
 
 const isInteresting = (number, awesomePhrases) => {
   if (number < 100) return 0
+  const arrayNumber = number.toString().split('').map((num) => parseInt(num))
 
   // check if number is in awesomePhrases
   if (awesomePhrases.includes(number)) return 2
 
   //check if number is approaching awesomePhrases
-  if(awesomePhrases.length > 0){
+  if (awesomePhrases.length > 0) {
     for (let i = 0; i < awesomePhrases.length; i++) {
       const element = awesomePhrases[i];
-      if (element - 1 === number || element -2 === number) {
+      if (element - 1 === number || element - 2 === number) {
         return 1
       }
     }
   }
 
-  const arrayNumber = number.toString().split('').map((num)=>parseInt(num))
-  //check if digit followed by all zeros
-  // const allZeros = checkForZeros(arrayNumber)
-  // if (allZeros) return 2
-  const zeros = checkForZeros(number)
-  console.log(zeros);
+  // check if all trailing zeros
+  const zeros = checkForZeros(arrayNumber, number)
+  if (zeros === 1 || zeros === 2 ) return zeros
+
+  if(checkForSameNumber(number)) return 2
+  if(checkForSameNumber(number + 1)) return 1
+  if(checkForSameNumber(number + 2)) return 1
 
 
 
- return 0
+  return 0
 }
 
-const checkForZeros = (number) => {
-  const arrayNumber = number.toString().split('').map((num)=>parseInt(num))
-  arrayNumber.shift()
+const checkForZeros = (arrayNumber, number) => {
   let checker = '1'
-  for (let i = 0; i < arrayNumber.length; i++) {
+  for (let i = 1; i < arrayNumber.length; i++) {
     checker += '0'
   }
   if (number % parseInt(checker) === 0) {
@@ -120,7 +120,16 @@ const checkForZeros = (number) => {
   }
 }
 
+const checkForSameNumber = (number) => {
+  const first = number % 10;
+  while (number) {
+    if (number % 10 !== first) return false;
+    number = Math.floor(number / 10);
+  }
+  return true
+}
 
 
 
-console.log(isInteresting(1001, []));
+
+console.log(isInteresting(997, []));

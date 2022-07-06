@@ -78,6 +78,7 @@
 
 
 const isInteresting = (number, awesomePhrases) => {
+  if (number === 98 || number === 99) return 1
   if (number < 100) return 0
   const arrayNumber = number.toString().split('').map((num) => parseInt(num))
 
@@ -97,21 +98,39 @@ const isInteresting = (number, awesomePhrases) => {
   // check if all trailing zeros
   // const zeros = checkForZeros(arrayNumber, number)
   // if (zeros === 1 || zeros === 2 ) return zeros
+  if(checkForZeros(number)) return 2
+  if(checkForSameNumber(number)) return 2
+  if(checkIncrementing(number)) return 2
+  if(checkDecrementing(number)) return 2
+  if(checkPalendrome(number)) return 2
+
+
+
+
+
+
+  if(checkForZeros(number + 1)) return 1
+  if(checkForZeros(number + 2)) return 1
 
   //check for repeating numbers
-  if(checkForSameNumber(number)) return 2
+  
   if(checkForSameNumber(number + 1)) return 1
   if(checkForSameNumber(number + 2)) return 1
 
   //check for incrementing
-  if(checkIncrementing(number)) return 2
+  
   if(checkIncrementing(number + 1)) return 1
   if(checkIncrementing(number + 2)) return 1
 
   //check for decrementing
-  if(checkDecrementing(number)) return 2
+  
   if(checkDecrementing(number + 1)) return 1
   if(checkDecrementing(number + 2)) return 1
+
+  //check palendrom
+  
+  if(checkPalendrome(number + 1)) return 1
+  if(checkPalendrome(number + 2)) return 1
   
 
 
@@ -119,16 +138,14 @@ const isInteresting = (number, awesomePhrases) => {
   return 0
 }
 
-const checkForZeros = (arrayNumber, number) => {
+const checkForZeros = (number) => {
+  const arrayNumber = number.toString().split('').map((num) => parseInt(num))
   let checker = '1'
   for (let i = 1; i < arrayNumber.length; i++) {
     checker += '0'
   }
   if (number % parseInt(checker) === 0) {
     return 2
-  }
-  if ((number + 1) % parseInt(checker) === 0 || (number + 2) % parseInt(checker) === 0) {
-    return 1
   }
 }
 
@@ -143,9 +160,16 @@ const checkForSameNumber = (number) => {
 
 const checkIncrementing = (number) => {
   const arrayNumber = number.toString().split('').map((num) => parseInt(num))
+  for (let i = 0; i < arrayNumber.length; i++) {
+    let num = arrayNumber[i];
+    if(num === 0)arrayNumber[i] = 10
+    
+  }
+  console.log(arrayNumber);
+
   let pointer = arrayNumber[0]
   for (let i = 1; i < arrayNumber.length; i++) {
-    const current = arrayNumber[i];
+    let current = arrayNumber[i];
     if (current !== (pointer + 1)){
       return false
     }
@@ -167,7 +191,18 @@ const checkDecrementing = (number) => {
   return true
 }
 
+const checkPalendrome = (number) => {
+  const arrayNumber = number.toString().split('').map((num) => parseInt(num))
+  const reversed = [...arrayNumber].reverse()
+
+  for (let i = 0; i < arrayNumber.length; i++) {
+    if (arrayNumber[i] !== reversed[i]) return false
+    
+  }
+
+  return true
+}
 
 
 
-console.log(isInteresting(65432, []));
+console.log(isInteresting(7899, []));

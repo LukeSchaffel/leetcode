@@ -213,40 +213,71 @@
 // gap in primes
 // https://www.codewars.com/kata/561e9c843a2ef5a40c0000a4/train/javascript
 
-const gap = (g, m, n) => {
-  let currentGap = 0
-  let prev
+// const gap = (g, m, n) => {
+//   let currentGap = 0
+//   let prev
 
-  for (let i = m; i <= n; i++) {
-    const current = i;
-    if (isPrime(current)) {
-      if (!prev) {
-        currentGap = 0
-        prev = current
-      }
-      if (currentGap === g) {
-        console.log(prev, current, currentGap)
-        return [ prev, current ]
-      }
-      currentGap = 0
-      prev = current
-    }
-    currentGap ++
-  }
-  return null
+//   for (let i = m; i <= n; i++) {
+//     const current = i;
+//     if (isPrime(current)) {
+//       if (!prev) {
+//         currentGap = 0
+//         prev = current
+//       }
+//       if (currentGap === g) {
+//         console.log(prev, current, currentGap)
+//         return [prev, current]
+//       }
+//       currentGap = 0
+//       prev = current
+//     }
+//     currentGap++
+//   }
+//   return null
+// }
+
+// const isPrime = (number) => {
+//   if (number === 1) return false
+//   if (number === 2) return true
+//   for (let i = 2; i < number - 1; i++) {
+//     const current = i
+//     if (number % current === 0) {
+//       return false
+//     }
+//   }
+//   return true
+// }
+
+
+// https://www.codewars.com/kata/52449b062fb80683ec000024/train/javascript
+// generate hashtag
+
+// function generateHashtag (str) {
+//   if (str.length < 1) return false
+//   const array = str.split(" ")
+//   const noSpace = array.filter((word) => word !== "")
+//   if (noSpace.length < 1) return false 
+//   const upperArray = noSpace.map((word) => {
+//     return word.charAt(0).toUpperCase() + word.slice(1)
+//   })
+//   return `#${upperArray.join('')}`.length < 141 ? `#${upperArray.join('')}` : false
+
+// }
+function generateHashtag(str) {
+  if (str.length < 1) return false
+  const array = str.split(" ").filter((word) => word !== "")
+  if (array.length < 1) return false
+  const upperArray = array.map((word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1)
+  })
+  return `#${upperArray.join('')}`.length < 141 ? `#${upperArray.join('')}` : false
+
 }
 
-const isPrime = (number) => {
-  if (number === 1) return false
-  if (number === 2) return true
-  for (let i = 2; i < number - 1; i++) {
-    const current = i
-    if (number % current === 0) {
-      return false
-    }
-  }
-  return true
+
+// validate password
+
+function validate(password) {
+  return /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password);
 }
 
-
-console.log(gap(11, 30000, 100000))

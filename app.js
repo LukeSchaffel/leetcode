@@ -519,3 +519,23 @@
 //   return false
   
 // };
+
+// number of good pairs
+//https://leetcode.com/problems/number-of-good-pairs/submissions/
+
+// var numIdenticalPairs = function(nums) {
+//   const prev = {}
+//   let pairs = 0
+  
+//   for(let i = 0; i < nums.length; i++){
+//       const current = nums[i]
+//       if(!(current in prev)){
+//           prev[current] = 1
+//       } else {
+//       pairs += prev[current]
+//       prev[current] ++    
+      
+//       }
+//   }
+//   return pairs
+// };

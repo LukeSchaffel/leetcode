@@ -444,3 +444,78 @@
 // };
 
 // console.log(lengthOfLastWord(" a"));
+
+
+// remove nth node from end https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+
+
+// var removeNthFromEnd = function(head, n) {
+    
+    
+//   let current = head
+//   let length = 0
+//   while(current !== null){
+//       length ++
+//       current = current.next
+//   }
+//   const toRemove = length - n + 1
+  
+//   current = head
+//   let index = 1
+//   let prev = null
+//   if(toRemove === 1) return head.next
+//   while(current !== null){
+//       if (index === toRemove){
+//           prev.next = current.next
+//       }
+      
+//       index ++
+//       prev = current
+//       current = current.next
+//   }
+  
+//    return head
+// };
+
+//intersection of two linked lists https://leetcode.com/problems/intersection-of-two-linked-lists/submissions/
+
+// var getIntersectionNode = function(headA, headB) {
+//   if (headA === null || headB === null) return null
+//   let currentA = headA
+//   let currentB = headB
+//   const set = new Set()
+  
+//   while (currentA !== null) {
+//       set.add(currentA)
+//       currentA = currentA.next
+//   }
+  
+//   while (currentB !== null){
+//       if(set.has(currentB)){
+//           console.log(currentB)
+//           return currentB
+//       }
+//       currentB = currentB.next
+//   }
+  
+//   return null
+// };
+
+// linked list cycle https://leetcode.com/problems/linked-list-cycle/submissions/
+
+// var hasCycle = function(head) {
+//   if (head === null) return false
+//   const prev = new Set()
+//   let current = head
+  
+//   while(current !== null){
+//       if (prev.has(current)){
+//           return true
+//       }
+//       prev.add(current)
+//       current = current.next
+//   }
+  
+//   return false
+  
+// };

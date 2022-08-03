@@ -539,3 +539,28 @@
 //   }
 //   return pairs
 // };
+
+
+
+//longest common prefix
+
+// var longestCommonPrefix = function(strs) {
+//   let prefix = ''
+//   const firstWord = strs[0]
+  
+//   for (let i = 0; i < firstWord.length; i++){
+//       const letter = firstWord[i]
+//       let isSame = true
+      
+//       for(let j = 1; j < strs.length; j++){
+//           const word = strs[j]
+//           if(letter !== word[i]){
+//              return prefix
+//           }    
+//       }
+//       if (isSame === true){
+//           prefix = prefix + letter
+//       }
+//   }
+//   return prefix
+// };

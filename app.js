@@ -564,3 +564,29 @@
 //   }
 //   return prefix
 // };
+
+
+//longest repeating substring without repeating characters
+
+var lengthOfLongestSubstring = function(s) {
+  const subStrings = []
+  let length = 0
+  
+  for (let i = 0; i < s.length; i ++){
+      let substring = `${s[i]}`
+      for (let j = i + 1; j < s.length; j++){
+          const letter = s[j]
+          if(!(substring.includes(letter))){
+              substring = substring + letter
+          } else {
+              break
+          }
+      }
+      if(substring.length > length) length = substring.length
+      subStrings.push(substring)
+  }
+  console.log(subStrings)
+ return length
+};
+
+console.log(lengthOfLongestSubstring("pwwkew"));

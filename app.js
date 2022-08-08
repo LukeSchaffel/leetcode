@@ -450,8 +450,8 @@
 
 
 // var removeNthFromEnd = function(head, n) {
-    
-    
+
+
 //   let current = head
 //   let length = 0
 //   while(current !== null){
@@ -459,7 +459,7 @@
 //       current = current.next
 //   }
 //   const toRemove = length - n + 1
-  
+
 //   current = head
 //   let index = 1
 //   let prev = null
@@ -468,12 +468,12 @@
 //       if (index === toRemove){
 //           prev.next = current.next
 //       }
-      
+
 //       index ++
 //       prev = current
 //       current = current.next
 //   }
-  
+
 //    return head
 // };
 
@@ -484,12 +484,12 @@
 //   let currentA = headA
 //   let currentB = headB
 //   const set = new Set()
-  
+
 //   while (currentA !== null) {
 //       set.add(currentA)
 //       currentA = currentA.next
 //   }
-  
+
 //   while (currentB !== null){
 //       if(set.has(currentB)){
 //           console.log(currentB)
@@ -497,7 +497,7 @@
 //       }
 //       currentB = currentB.next
 //   }
-  
+
 //   return null
 // };
 
@@ -507,7 +507,7 @@
 //   if (head === null) return false
 //   const prev = new Set()
 //   let current = head
-  
+
 //   while(current !== null){
 //       if (prev.has(current)){
 //           return true
@@ -515,9 +515,9 @@
 //       prev.add(current)
 //       current = current.next
 //   }
-  
+
 //   return false
-  
+
 // };
 
 // number of good pairs
@@ -526,7 +526,7 @@
 // var numIdenticalPairs = function(nums) {
 //   const prev = {}
 //   let pairs = 0
-  
+
 //   for(let i = 0; i < nums.length; i++){
 //       const current = nums[i]
 //       if(!(current in prev)){
@@ -534,7 +534,7 @@
 //       } else {
 //       pairs += prev[current]
 //       prev[current] ++    
-      
+
 //       }
 //   }
 //   return pairs
@@ -547,11 +547,11 @@
 // var longestCommonPrefix = function(strs) {
 //   let prefix = ''
 //   const firstWord = strs[0]
-  
+
 //   for (let i = 0; i < firstWord.length; i++){
 //       const letter = firstWord[i]
 //       let isSame = true
-      
+
 //       for(let j = 1; j < strs.length; j++){
 //           const word = strs[j]
 //           if(letter !== word[i]){
@@ -568,25 +568,131 @@
 
 //longest repeating substring without repeating characters
 
-var lengthOfLongestSubstring = function(s) {
-  const subStrings = []
-  let length = 0
-  
-  for (let i = 0; i < s.length; i ++){
-      let substring = `${s[i]}`
-      for (let j = i + 1; j < s.length; j++){
-          const letter = s[j]
-          if(!(substring.includes(letter))){
-              substring = substring + letter
-          } else {
-              break
-          }
-      }
-      if(substring.length > length) length = substring.length
-      subStrings.push(substring)
-  }
-  console.log(subStrings)
- return length
-};
+// var lengthOfLongestSubstring = function (s) {
+//   const subStrings = []
+//   let length = 0
 
-console.log(lengthOfLongestSubstring("pwwkew"));
+//   for (let i = 0; i < s.length; i++) {
+//     let substring = new Set()
+//     substring.add(s[i])
+//     for (let j = i + 1; j < s.length; j++) {
+//       const letter = s[j]
+//       if (!(substring.has(letter))) {
+//         substring.add(letter)
+//       } else {
+//         break
+//       }
+//     }
+//     if (substring.size > length) length = substring.size
+//     subStrings.push(substring)
+//   }
+//   return length
+// };
+
+// console.log(lengthOfLongestSubstring("pwwkew"));
+
+
+
+
+// var longestPalindrome = function (s) {
+//   if (s.length === 1) return s
+//   if (isPalendrome(s)) return s
+//   let pal = ''
+
+//   for (let i = 0; i < s.length; i++) {
+//     const start = s[i]
+//     let substring = `${start}`
+//     if (isPalendrome(substring) && substring.length > pal.length) {
+//       pal = substring
+//     }
+//     for (let j = i + 1; j < s.length; j++) {
+//       const letter = s[j]
+//       substring = substring + letter
+//       if (isPalendrome(substring) && substring.length > pal.length) {
+//         pal = substring
+//       }
+
+
+//     }
+
+//   }
+//   console.log(pal);
+//   return pal
+// };
+
+// const isPalendrome = (string) => {
+//   if (string === string.split('').reverse().join('')) return true
+// }
+
+//https://www.codewars.com/kata/51fda2d95d6efda45e00004e/train/javascript
+
+class User {
+  constructor() {
+    this.rank = -8,
+      this.progress = 0
+  }
+  incProgress(rank) {
+    this.checkMax()
+    if (rank < -8 || rank > 8 || rank === 0) {
+      const error = `${rank} is not within bounds`
+      console.log(error)
+      throw error
+      return
+    }
+
+    if (rank < this.rank) {
+      return
+    }
+    if (rank === this.rank) {
+      this.progress += 3
+      this.checkProgress()
+    }
+    if (rank > this.rank) {
+      let diff = rank - this.rank
+      if (rank > 0 && this.rank < 0) {
+        console.log(diff);
+        diff--
+        console.log(diff);
+      }
+      this.progress += 10 * diff * diff
+      this.checkProgress()
+      this.checkMax()
+    }
+    this.checkMax()
+  }
+
+  checkProgress() {
+    if (this.progress === 100) {
+      this.rank += 1
+      this.progress = 0
+      this.checkZero()
+      return
+    }
+    let progressAcc = this.progress
+    while (progressAcc > 100) {
+      progressAcc -= 100
+      this.rank++
+      this.checkZero()
+      this.checkMax()
+    }
+    this.progress = progressAcc > 0 ? progressAcc : 0
+  }
+  checkZero(){
+    if (this.rank === 0) {
+      this.rank = 1
+    }
+  }
+  checkMax(){
+    if (this.rank > 7) {
+      console.log('highest rank achecived')
+      this.rank = 8
+      this.progress = 0
+      return
+    }
+  }
+}
+
+const user = new User()
+user.rank = -1
+user.incProgress(5)
+console.log(user);

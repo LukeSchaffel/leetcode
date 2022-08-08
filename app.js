@@ -635,25 +635,24 @@ class User {
     this.checkMax()
     if (rank < -8 || rank > 8 || rank === 0) {
       const error = `${rank} is not within bounds`
-      console.log(error)
       throw error
       return
     }
-
-    if (rank < this.rank) {
+    let diff = this.findDiff(rank)
+    
+    if (diff < -1)  {
       return
     }
-    if (rank === this.rank) {
+    if (diff === -1) {
+      this.progress += 1
+      this.checkProgress()
+    }
+    if (diff === 0) {
       this.progress += 3
       this.checkProgress()
     }
-    if (rank > this.rank) {
-      let diff = rank - this.rank
-      if (rank > 0 && this.rank < 0) {
-        console.log(diff);
-        diff--
-        console.log(diff);
-      }
+    
+    if (diff > 0) {
       this.progress += 10 * diff * diff
       this.checkProgress()
       this.checkMax()
@@ -669,7 +668,7 @@ class User {
       return
     }
     let progressAcc = this.progress
-    while (progressAcc > 100) {
+    while (progressAcc > 99) {
       progressAcc -= 100
       this.rank++
       this.checkZero()
@@ -684,15 +683,24 @@ class User {
   }
   checkMax(){
     if (this.rank > 7) {
-      console.log('highest rank achecived')
       this.rank = 8
       this.progress = 0
       return
     }
   }
+  findDiff(rank){
+    let diff = rank - this.rank
+    if (rank > 0 && this.rank < 0) {
+      diff --
+    }
+    if (rank < 0 && this.rank > 0) {
+      diff ++
+    }
+    return diff
+  }
 }
 
 const user = new User()
 user.rank = -1
-user.incProgress(5)
+user.incProgress(1)
 console.log(user);

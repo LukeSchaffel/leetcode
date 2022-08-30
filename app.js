@@ -626,81 +626,109 @@
 
 //https://www.codewars.com/kata/51fda2d95d6efda45e00004e/train/javascript
 
-class User {
-  constructor() {
-    this.rank = -8,
-      this.progress = 0
-  }
-  incProgress(rank) {
-    this.checkMax()
-    if (rank < -8 || rank > 8 || rank === 0) {
-      const error = `${rank} is not within bounds`
-      throw error
-      return
-    }
-    let diff = this.findDiff(rank)
+// class User {
+//   constructor() {
+//     this.rank = -8,
+//       this.progress = 0
+//   }
+//   incProgress(rank) {
+//     this.checkMax()
+//     if (rank < -8 || rank > 8 || rank === 0) {
+//       const error = `${rank} is not within bounds`
+//       throw error
+//       return
+//     }
+//     let diff = this.findDiff(rank)
     
-    if (diff < -1)  {
-      return
-    }
-    if (diff === -1) {
-      this.progress += 1
-      this.checkProgress()
-    }
-    if (diff === 0) {
-      this.progress += 3
-      this.checkProgress()
-    }
+//     if (diff < -1)  {
+//       return
+//     }
+//     if (diff === -1) {
+//       this.progress += 1
+//       this.checkProgress()
+//     }
+//     if (diff === 0) {
+//       this.progress += 3
+//       this.checkProgress()
+//     }
     
-    if (diff > 0) {
-      this.progress += 10 * diff * diff
-      this.checkProgress()
-      this.checkMax()
-    }
-    this.checkMax()
-  }
+//     if (diff > 0) {
+//       this.progress += 10 * diff * diff
+//       this.checkProgress()
+//       this.checkMax()
+//     }
+//     this.checkMax()
+//   }
 
-  checkProgress() {
-    if (this.progress === 100) {
-      this.rank += 1
-      this.progress = 0
-      this.checkZero()
-      return
-    }
-    let progressAcc = this.progress
-    while (progressAcc > 99) {
-      progressAcc -= 100
-      this.rank++
-      this.checkZero()
-      this.checkMax()
-    }
-    this.progress = progressAcc > 0 ? progressAcc : 0
-  }
-  checkZero(){
-    if (this.rank === 0) {
-      this.rank = 1
-    }
-  }
-  checkMax(){
-    if (this.rank > 7) {
-      this.rank = 8
-      this.progress = 0
-      return
-    }
-  }
-  findDiff(rank){
-    let diff = rank - this.rank
-    if (rank > 0 && this.rank < 0) {
-      diff --
-    }
-    if (rank < 0 && this.rank > 0) {
-      diff ++
-    }
-    return diff
-  }
-}
+//   checkProgress() {
+//     if (this.progress === 100) {
+//       this.rank += 1
+//       this.progress = 0
+//       this.checkZero()
+//       return
+//     }
+//     let progressAcc = this.progress
+//     while (progressAcc > 99) {
+//       progressAcc -= 100
+//       this.rank++
+//       this.checkZero()
+//       this.checkMax()
+//     }
+//     this.progress = progressAcc > 0 ? progressAcc : 0
+//   }
+//   checkZero(){
+//     if (this.rank === 0) {
+//       this.rank = 1
+//     }
+//   }
+//   checkMax(){
+//     if (this.rank > 7) {
+//       this.rank = 8
+//       this.progress = 0
+//       return
+//     }
+//   }
+//   findDiff(rank){
+//     let diff = rank - this.rank
+//     if (rank > 0 && this.rank < 0) {
+//       diff --
+//     }
+//     if (rank < 0 && this.rank > 0) {
+//       diff ++
+//     }
+//     return diff
+//   }
+// }
 
-const user = new User()
-user.rank = -1
-user.incProgress(1)
-console.log(user);
+// const user = new User()
+// user.rank = -1
+// user.incProgress(1)
+// console.log(user);
+
+
+// container with most water -- https://leetcode.com/problems/container-with-most-water/submissions/
+
+// var maxArea = function(height) {
+//   let maxArea = 0
+//   let i = 0
+//   let j = height.length - 1
+  
+//   while(i < j){
+//       const left = height[i]
+//       const right = height[j]
+//       const currentHeight = left <= right ? left : right
+//       const currentWidth = j - i
+//       const currentArea = (currentHeight)*(currentWidth)
+//       if(currentArea > maxArea){
+//           maxArea = currentArea
+//       }
+      
+//       if(left >= right){
+//           j --
+//       } else {
+//           i ++
+//       }   
+//   }
+//   return maxArea
+  
+// };
